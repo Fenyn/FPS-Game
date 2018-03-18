@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour {
 
     float timeSinceSpawn = 0f;
+    public float lifetime = 1f;
 
 	// Use this for initialization
 	void Start () {
@@ -14,7 +15,7 @@ public class BulletScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		timeSinceSpawn += Time.deltaTime;
-        if(timeSinceSpawn >= 5f){
+        if(timeSinceSpawn >= lifetime){
             Destroy(this.gameObject);
         }
 	}

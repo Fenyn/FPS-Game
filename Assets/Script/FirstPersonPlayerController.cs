@@ -55,10 +55,10 @@ public class FirstPersonPlayerController : MonoBehaviour {
             }
         }
 
-        if(Input.GetButton("Jump") && numOfJumps < maxNumOfJumps) {
-            verticalVelocity = jumpHeight;
-            numOfJumps++;
-        }
+        //if(Input.GetButton("Jump") && numOfJumps < maxNumOfJumps) {
+        //    verticalVelocity = jumpHeight;
+        //    numOfJumps++;
+        //}
 
         Vector3 speed = new Vector3(sideSpeed, verticalVelocity,forwardSpeed);
 
@@ -68,5 +68,7 @@ public class FirstPersonPlayerController : MonoBehaviour {
         //cc.SimpleMove(speed*moveSpeed);
 
         cc.Move(speed * Time.deltaTime);
+
+        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * 50);
 	}
 }
