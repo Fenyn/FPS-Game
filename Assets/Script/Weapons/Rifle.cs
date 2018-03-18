@@ -4,16 +4,34 @@ using UnityEngine;
 
 public class Rifle : Weapon {
 
-    float bulletImpulse = 80f;
     float shotCooldown = .1f;
 
+    int ammo;
+    int maxAmmo = 41;
 
-    void Shoot() {
-        if (Input.GetButton("Fire1") && shotCooldown <= Time.deltaTime) {
-            Debug.Log("shoot bullet here");
-            //Camera camera = Camera.main;
-            //GameObject bullet = Instantiate(bullet_prefab, camera.transform.position + camera.transform.forward, camera.transform.rotation);
-            //bullet.GetComponent<Rigidbody>().AddForce(camera.transform.forward * bulletImpulse, ForceMode.Impulse);
+    public override int Ammo {
+        get {
+            return ammo;
         }
+
+        set {
+            ammo = value;
+        }
+    }
+
+    public override float MaxAmmo {
+        get {
+            return maxAmmo;
+        }
+    }
+
+    public override float ShotCooldown {
+        get {
+            return shotCooldown;
+        }
+    }
+
+    public override void Reload() {
+        ammo = maxAmmo;
     }
 }

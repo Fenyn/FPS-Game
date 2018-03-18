@@ -17,13 +17,6 @@ public class PerformsAttack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         cooldownRemaining -= Time.deltaTime;
-        if (Input.GetMouseButton(0) && cooldownRemaining <= 0) {
-            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-            RaycastHit hitInfo;
-
-            if (Physics.Raycast(ray, out hitInfo, gunRange)) {
-                Vector3 hitPoint = hitInfo.point;
-            }
-        }
+       
 	}
 }

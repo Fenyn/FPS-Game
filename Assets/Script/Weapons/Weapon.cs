@@ -2,18 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon {
+public abstract class Weapon {
 
     int ammo;
     int maxAmmo;
+    float shotCooldown;
 
-    public GameObject bullet_prefab;
+    public virtual int Ammo {
+        get {
+            return ammo;
+        }
 
-    private void Start() {
-        ammo = maxAmmo;
+        set {
+            ammo = value;
+        }
     }
 
-    public void Shoot() {
+    public virtual float MaxAmmo {
+        get {
+            return maxAmmo;
+        }
+    }
 
+    public virtual float ShotCooldown {
+        get {
+            return shotCooldown;
+        }
+    }
+
+    public virtual void Reload() {
+        ammo = maxAmmo;
     }
 }
