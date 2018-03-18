@@ -8,6 +8,13 @@ public abstract class Weapon {
     int maxAmmo;
     float shotCooldown;
 
+
+    /*
+     ***********************
+     * Getters and Setters * 
+     ***********************
+     */
+
     public virtual int Ammo {
         get {
             return ammo;
@@ -29,6 +36,13 @@ public abstract class Weapon {
             return shotCooldown;
         }
     }
+
+
+    /*
+     **********************
+     * Functional Methods * 
+     **********************
+     */
 
     public virtual void Reload() {
         ammo = maxAmmo;

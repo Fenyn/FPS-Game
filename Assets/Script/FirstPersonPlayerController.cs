@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent (typeof(CharacterController))]
+[RequireComponent(typeof(CharacterController))]
 public class FirstPersonPlayerController : MonoBehaviour {
 
     public StatisticsManager statManager;
@@ -20,23 +20,23 @@ public class FirstPersonPlayerController : MonoBehaviour {
     CharacterController cc;
 
     // Use this for initialization
-    void Start () {
+    void Start() {
         Cursor.lockState = CursorLockMode.Locked;
         cc = GetComponent<CharacterController>();
         statManager = GameObject.Find("Player").GetComponent<StatisticsManager>();
         moveSpeed = statManager.moveSpeed;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update() {
 
         //Camera Rotation
         float rotLR = Input.GetAxis("Mouse X");
         verticalRotation -= Input.GetAxis("Mouse Y") * mouseSensitivityUD;
         verticalRotation = Mathf.Clamp(verticalRotation, -cameraRotationLimit, cameraRotationLimit);
 
-        transform.Rotate(0, rotLR*mouseSensitivityLR, 0);
-        Camera.main.transform.localRotation = Quaternion.Euler(verticalRotation,0,0);
+        transform.Rotate(0, rotLR * mouseSensitivityLR, 0);
+        Camera.main.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
 
         //Character Movement
         float forwardSpeed = Input.GetAxis("Vertical") * moveSpeed;
@@ -47,9 +47,9 @@ public class FirstPersonPlayerController : MonoBehaviour {
             verticalVelocity = 0;
         }
 
-        if (Input.GetButton("Jump") && (cc.isGrounded || numOfJumps< maxNumOfJumps)) {
+        if (Input.GetButton("Jump") && (cc.isGrounded || numOfJumps < maxNumOfJumps)) {
             verticalVelocity = jumpHeight;
-            if(numOfJumps < maxNumOfJumps) {
+            if (numOfJumps < maxNumOfJumps) {
                 numOfJumps++;
                 Debug.Log(numOfJumps);
             }
@@ -60,7 +60,7 @@ public class FirstPersonPlayerController : MonoBehaviour {
         //    numOfJumps++;
         //}
 
-        Vector3 speed = new Vector3(sideSpeed, verticalVelocity,forwardSpeed);
+        Vector3 speed = new Vector3(sideSpeed, verticalVelocity, forwardSpeed);
 
         speed = transform.rotation * speed;
 
@@ -69,6 +69,5 @@ public class FirstPersonPlayerController : MonoBehaviour {
 
         cc.Move(speed * Time.deltaTime);
 
-        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * 50);
-	}
+    }
 }

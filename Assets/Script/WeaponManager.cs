@@ -12,7 +12,7 @@ public class WeaponManager : MonoBehaviour {
     public GameObject bulletPrefab;
     public float timeSinceFired;
     public Weapon activeWep;
-    
+
 
     public Weapon ActiveWep {
         get {
@@ -61,21 +61,30 @@ public class WeaponManager : MonoBehaviour {
     private void Update() {
         timeSinceFired += Time.deltaTime;
 
+        //Weapon Switching
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
             ActiveWep = weaponArray[0];
             Debug.Log("Active weapon is now a " + ActiveWep);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2)){
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) {
             ActiveWep = weaponArray[1];
             Debug.Log("Active weapon is now a " + ActiveWep);
-        } else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3)) {
             ActiveWep = weaponArray[2];
             Debug.Log("Active weapon is now a " + ActiveWep);
-        } else if (Input.GetKeyDown(KeyCode.Alpha4)) {
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4)) {
             ActiveWep = weaponArray[3];
             Debug.Log("Active weapon is now a " + ActiveWep);
         }
 
+        //Fire weapon
+        if (Input.GetButton("Fire1")) {
+            Shoot();
+        }
+
+        //Reload Weapon
         if (Input.GetKeyDown(KeyCode.R)) {
             ActiveWep.Reload();
         }
@@ -83,8 +92,10 @@ public class WeaponManager : MonoBehaviour {
     }
 
     public void Shoot() {
-        if(timeSinceFired >= ActiveWep.ShotCooldown && ActiveWep.Ammo > 0) {
+        if (timeSinceFired >= ActiveWep.ShotCooldown && ActiveWep.Ammo > 0) {
             ActiveWep.Ammo--;
+
+            //Raycast out to find a hit, then spawn a bullet object to mark the location
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
             RaycastHit hitInfo;
 

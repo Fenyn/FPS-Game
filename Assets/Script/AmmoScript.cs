@@ -10,16 +10,18 @@ public class AmmoScript : MonoBehaviour {
 
     int ammo;
 
-	// Use this for initialization
-	void Start () {
-        ammo = wepManager.ActiveWep.Ammo;
-        ammoCounterUIObject.GetComponent<Text>().text = ammo.ToString();
+    // Use this for initialization
+    void Start() {
+        updateAmmo();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
+        updateAmmo();
+    }
+
+    void updateAmmo() {
         ammo = wepManager.ActiveWep.Ammo;
         ammoCounterUIObject.GetComponent<Text>().text = ammo.ToString();
-
     }
 }

@@ -32,12 +32,12 @@ public class StatisticsManager : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start() {
         CurrentHealth = MaxHealth;
-	}
+    }
 
     private void FixedUpdate() {
-        if(currentHealth <= -maxHealth) {
+        if (currentHealth <= -maxHealth) {
             Debug.Log(currentHealth);
             Debug.Log(maxHealth);
             Debug.Log("Destroying object " + gameObject.name);
@@ -46,7 +46,7 @@ public class StatisticsManager : MonoBehaviour {
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if(collision.gameObject.tag == "bullet") {
+        if (collision.gameObject.tag == "bullet") {
             Debug.Log("Reducing health by 10");
             currentHealth -= 10;
         }

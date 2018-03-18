@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class PerformsAttack : MonoBehaviour {
 
+    //CLASS NOT CURRENTLY USED
+
     public float timeBetweenShots = 0.5f;
     public float gunRange = 100f;
 
     float cooldownRemaining = 0;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Use this for initialization
+    void Start() {
+
+    }
+
+    // Update is called once per frame
+    void Update() {
         cooldownRemaining -= Time.deltaTime;
-       
-	}
+
+    }
 }

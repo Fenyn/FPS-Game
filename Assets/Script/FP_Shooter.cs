@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FP_Shooter : MonoBehaviour {
 
+    //CLASS NOT CURRENTLY USED
+
     public GameObject bullet_prefab;
     public WeaponManager wepManager;
 

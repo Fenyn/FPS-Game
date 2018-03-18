@@ -9,6 +9,12 @@ public class Rifle : Weapon {
     int ammo;
     int maxAmmo = 41;
 
+    /*
+     ***********************
+     * Getters and Setters * 
+     ***********************
+     */
+
     public override int Ammo {
         get {
             return ammo;
@@ -30,6 +36,13 @@ public class Rifle : Weapon {
             return shotCooldown;
         }
     }
+
+
+    /*
+     **********************
+     * Functional Methods * 
+     **********************
+     */
 
     public override void Reload() {
         ammo = maxAmmo;
