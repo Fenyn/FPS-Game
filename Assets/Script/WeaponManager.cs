@@ -93,6 +93,7 @@ public class WeaponManager : MonoBehaviour {
 
     public void Shoot() {
         if (timeSinceFired >= ActiveWep.ShotCooldown && ActiveWep.Ammo > 0) {
+            //Decrease ammo count
             ActiveWep.Ammo--;
 
             //Raycast out to find a hit, then spawn a bullet object to mark the location
@@ -100,7 +101,8 @@ public class WeaponManager : MonoBehaviour {
             RaycastHit hitInfo;
 
             if (Physics.Raycast(ray, out hitInfo, ActiveWep.MaxRange)) {
-                hitInfo.collider.gameObject.GetComponent<StatisticsManager>().DealDamageToObject((int) ActiveWep.BulletDamage);
+                //deal damage to the object we collided with equal to the current weapon's bullet damage
+                hitInfo.collider.gameObject.GetComponent<StatisticsManager>().DealDamageToObject(ActiveWep.BulletDamage);
                 Debug.Log("Ray hit " + hitInfo.collider.tag);
                
                 Vector3 hitPoint = hitInfo.point;

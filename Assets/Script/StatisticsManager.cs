@@ -48,13 +48,12 @@ public class StatisticsManager : MonoBehaviour {
 
     private void FixedUpdate() {
         if (currentHealth <= 0) {
-            Debug.Log(currentHealth);
-            Debug.Log(maxHealth);
             Debug.Log("Destroying object " + gameObject.name);
             Destroy(this.gameObject);
         }
     }
 
+    //Call this to deal damage to the object this is attached to.
     public void DealDamageToObject(int damage) {
         Debug.Log("Dealing " + damage.ToString() + " to HP pool: " + currentHealth);
         this.currentHealth -= damage;
