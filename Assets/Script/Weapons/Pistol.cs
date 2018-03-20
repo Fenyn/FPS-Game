@@ -5,8 +5,9 @@ using UnityEngine;
 public class Pistol : Weapon {
 
     float shotCooldown = 1f;
+    float maxRange = 30f;
+    int bulletDamage = 15;
     int maxAmmo = 18;
-
     int ammo;
 
 
@@ -35,6 +36,18 @@ public class Pistol : Weapon {
     public override float ShotCooldown {
         get {
             return shotCooldown;
+        }
+    }
+
+    public override float MaxRange {
+        get {
+            return maxRange;
+        }
+    }
+
+    public override int BulletDamage {
+        get {
+            return bulletDamage;
         }
     }
 

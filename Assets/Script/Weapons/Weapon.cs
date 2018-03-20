@@ -4,9 +4,11 @@ using UnityEngine;
 
 public abstract class Weapon {
 
+    float maxRange;
+    float shotCooldown;
+    int bulletDamage;
     int ammo;
     int maxAmmo;
-    float shotCooldown;
 
 
     /*
@@ -34,6 +36,18 @@ public abstract class Weapon {
     public virtual float ShotCooldown {
         get {
             return shotCooldown;
+        }
+    }
+
+    public virtual float MaxRange {
+        get {
+            return maxRange;
+        }
+    }
+
+    public virtual int BulletDamage {
+        get {
+            return bulletDamage;
         }
     }
 

@@ -5,9 +5,11 @@ using UnityEngine;
 public class Rifle : Weapon {
 
     float shotCooldown = .1f;
+    float maxRange = 80f;
+    int bulletDamage = 10;
+    int maxAmmo = 41;
 
     int ammo;
-    int maxAmmo = 41;
 
     /*
      ***********************
@@ -37,7 +39,17 @@ public class Rifle : Weapon {
         }
     }
 
+    public override float MaxRange {
+        get {
+            return maxRange;
+        }
+    }
 
+    public override int BulletDamage {
+        get {
+            return bulletDamage;
+        }
+    }
     /*
      **********************
      * Functional Methods * 

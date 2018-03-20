@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class StatisticsManager : MonoBehaviour {
 
-    public float maxHealth;
-    private float currentHealth;
+    public int maxHealth;
+    public int currentHealth;
 
-    public float moveSpeed;
+    public float moveSpeed = 10f;
 
     public GameObject bulletGO;
 
-    public float CurrentHealth {
+    public int CurrentHealth {
         get {
             return currentHealth;
         }
@@ -21,7 +21,7 @@ public class StatisticsManager : MonoBehaviour {
         }
     }
 
-    public float MaxHealth {
+    public int MaxHealth {
         get {
             return maxHealth;
         }
@@ -31,13 +31,23 @@ public class StatisticsManager : MonoBehaviour {
         }
     }
 
+    public float MoveSpeed {
+        get {
+            return moveSpeed;
+        }
+
+        set {
+            moveSpeed = value;
+        }
+    }
+
     // Use this for initialization
     void Start() {
         CurrentHealth = MaxHealth;
     }
 
     private void FixedUpdate() {
-        if (currentHealth <= -maxHealth) {
+        if (currentHealth <= 0) {
             Debug.Log(currentHealth);
             Debug.Log(maxHealth);
             Debug.Log("Destroying object " + gameObject.name);
@@ -45,11 +55,10 @@ public class StatisticsManager : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.tag == "bullet") {
-            Debug.Log("Reducing health by 10");
-            currentHealth -= 10;
-        }
+    public void DealDamageToObject(int damage) {
+        Debug.Log("Dealing " + damage.ToString() + " to HP pool: " + currentHealth);
+        this.currentHealth -= damage;
+        Debug.Log("Health is now" + currentHealth);
     }
 
 }

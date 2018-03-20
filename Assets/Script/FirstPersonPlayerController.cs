@@ -24,7 +24,7 @@ public class FirstPersonPlayerController : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked;
         cc = GetComponent<CharacterController>();
         statManager = GameObject.Find("Player").GetComponent<StatisticsManager>();
-        moveSpeed = statManager.moveSpeed;
+        moveSpeed = statManager.MoveSpeed;
     }
 
     // Update is called once per frame
@@ -42,18 +42,19 @@ public class FirstPersonPlayerController : MonoBehaviour {
         float forwardSpeed = Input.GetAxis("Vertical") * moveSpeed;
         float sideSpeed = Input.GetAxis("Horizontal") * moveSpeed;
 
-        verticalVelocity += Physics.gravity.y * Time.deltaTime * 2;
         if (cc.isGrounded) {
             verticalVelocity = 0;
+            numOfJumps = 0;
         }
 
-        if (Input.GetButton("Jump") && (cc.isGrounded || numOfJumps < maxNumOfJumps)) {
+        if (Input.GetButtonDown("Jump") && (cc.isGrounded || numOfJumps < maxNumOfJumps)) {
             verticalVelocity = jumpHeight;
-            if (numOfJumps < maxNumOfJumps) {
-                numOfJumps++;
-                Debug.Log(numOfJumps);
-            }
+            numOfJumps++;
+            Debug.Log(numOfJumps);
         }
+
+        verticalVelocity += Physics.gravity.y * Time.deltaTime * 2;
+
 
         //if(Input.GetButton("Jump") && numOfJumps < maxNumOfJumps) {
         //    verticalVelocity = jumpHeight;

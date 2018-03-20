@@ -99,7 +99,10 @@ public class WeaponManager : MonoBehaviour {
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
             RaycastHit hitInfo;
 
-            if (Physics.Raycast(ray, out hitInfo, 100f)) {
+            if (Physics.Raycast(ray, out hitInfo, ActiveWep.MaxRange)) {
+                hitInfo.collider.gameObject.GetComponent<StatisticsManager>().DealDamageToObject((int) ActiveWep.BulletDamage);
+                Debug.Log("Ray hit " + hitInfo.collider.tag);
+               
                 Vector3 hitPoint = hitInfo.point;
                 Instantiate(bulletPrefab, hitPoint, Quaternion.identity);
             }
