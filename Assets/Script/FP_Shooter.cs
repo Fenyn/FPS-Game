@@ -15,9 +15,9 @@ public class FP_Shooter : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
-        if (Input.GetButton("Fire1")) {
-            wepManager.Shoot();
-        }
-	}
+ //   void Update () {
+ //       if (Input.GetButton("Fire1")) {
+ //           wepManager.Shoot();
+ //       }
+	//}
 }

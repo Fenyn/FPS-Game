@@ -26,7 +26,7 @@ public class UIStatManager : MonoBehaviour {
 
     void updateAmmo() {
         ammo = wepManager.ActiveWep.Ammo;
-        ammoCounterUIObject.GetComponent<Text>().text = ammo.ToString();
+        ammoCounterUIObject.GetComponent<Text>().text = ammo.ToString() + " / " + wepManager.ActiveWep.MaxAmmo.ToString();
     }
 
     void updateHealth() {

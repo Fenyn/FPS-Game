@@ -103,6 +103,7 @@
     <Compile Include="Assets\Script\Weapons\Pistol.cs" />
     <Compile Include="Assets\Script\Weapons\Rifle.cs" />
     <Compile Include="Assets\Script\Weapons\Weapon.cs" />
+    <Compile Include="Assets\Utilities\SimplePool.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Sci-fi Weapons Arsenal\Effects\Shaders\WeaponLazer.shader" />

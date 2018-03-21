@@ -21,15 +21,18 @@ public class FirstPersonPlayerController : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        /* Following code provided by  Martin "quill18" Glaude */
         Cursor.lockState = CursorLockMode.Locked;
         cc = GetComponent<CharacterController>();
         statManager = GameObject.Find("Player").GetComponent<StatisticsManager>();
         moveSpeed = statManager.MoveSpeed;
+        /* End code provided by  Martin "quill18" Glaude */
     }
 
     // Update is called once per frame
     void Update() {
 
+        /* Following code provided by  Martin "quill18" Glaude */
         //Camera Rotation
         float rotLR = Input.GetAxis("Mouse X");
         verticalRotation -= Input.GetAxis("Mouse Y") * mouseSensitivityUD;
@@ -41,25 +44,23 @@ public class FirstPersonPlayerController : MonoBehaviour {
         //Character Movement
         float forwardSpeed = Input.GetAxis("Vertical") * moveSpeed;
         float sideSpeed = Input.GetAxis("Horizontal") * moveSpeed;
+        /* End code provided by  Martin "quill18" Glaude */
 
+        //Reset relevant parameters when character hits the ground
         if (cc.isGrounded) {
             verticalVelocity = 0;
             numOfJumps = 0;
         }
 
+        //Character Jumping
         if (Input.GetButtonDown("Jump") && (cc.isGrounded || numOfJumps < maxNumOfJumps)) {
             verticalVelocity = jumpHeight;
             numOfJumps++;
-            Debug.Log(numOfJumps);
         }
 
+        //Basic gravity simulation, doubled the gravitic constant to provide for more responsive falling
         verticalVelocity += Physics.gravity.y * Time.deltaTime * 2;
 
-
-        //if(Input.GetButton("Jump") && numOfJumps < maxNumOfJumps) {
-        //    verticalVelocity = jumpHeight;
-        //    numOfJumps++;
-        //}
 
         Vector3 speed = new Vector3(sideSpeed, verticalVelocity, forwardSpeed);
 
