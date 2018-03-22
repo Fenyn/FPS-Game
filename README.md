@@ -1,5 +1,7 @@
 # FPS-Game
 In-development prototype of basic FPS game using the Unity engine. 
+A semi-featured version of this is playable at https://fenyn.github.io/fps-game.html.
+NOTE: This does not include the weapon models as those are not currently available in the web version
 
 Originally started as a tutorial on how to program a custom character controller, then has been built upon from there.
 
