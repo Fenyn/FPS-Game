@@ -239,6 +239,55 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a5a7d4bafa537946a0d1c8fe835b845, type: 2}
   m_IsPrefabParent: 0
+<<<<<<< HEAD:Assets/Scenes/prototyping level.unity
+=======
+--- !u!1 &971022211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 971022213}
+  - component: {fileID: 971022212}
+  m_Layer: 0
+  m_Name: WeaponManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &971022212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 971022211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5cbe5ad5cb87c641ac7d158f75b1e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponPrefabArray:
+  - {fileID: 2130412615}
+  - {fileID: 594893431}
+  bulletPrefab: {fileID: 1124876433928564, guid: 29d7b682926816d44b2d07f58b25d513,
+    type: 2}
+  timeSinceFired: 0
+--- !u!4 &971022213
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 971022211}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.0551567, y: 3.3462486, z: 2.2028122}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+>>>>>>> 659eb5c938f17bd9348c93c316cd451d743bf3c0:Assets/Scenes/level01.unity
 --- !u!1 &992909223
 GameObject:
   m_ObjectHideFlags: 0
