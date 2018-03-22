@@ -475,8 +475,6 @@ MonoBehaviour:
   weaponPrefabArray:
   - {fileID: 2130412615}
   - {fileID: 594893431}
-  - {fileID: 0}
-  - {fileID: 0}
   bulletPrefab: {fileID: 1124876433928564, guid: 29d7b682926816d44b2d07f58b25d513,
     type: 2}
   timeSinceFired: 0
