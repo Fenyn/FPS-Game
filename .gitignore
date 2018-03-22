@@ -1,5 +1,8 @@
 
-/Assets/Sci-fi Weapons Arsenal/
+/Assets/Sci-fi Weapons Arsenal/*
+!/Assets/Sci-fi Weapons Arsenal/Prefabs/
+
 /Library/*
 /Temp/
 /Assets/Sci-fi Weapons Arsenal.meta
+
