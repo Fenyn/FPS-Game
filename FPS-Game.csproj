@@ -106,6 +106,7 @@
     <Compile Include="Assets\Utilities\SimplePool.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Sci-fi Weapons Arsenal\Effects\Shaders\WeaponLazer.shader" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\ParticleSystems\ParticleSystemsGuidelines.txt" />
     <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
