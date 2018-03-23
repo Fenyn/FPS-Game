@@ -328,6 +328,11 @@ Prefab:
       propertyPath: wepManager
       value: 
       objectReference: {fileID: 971022212}
+    - target: {fileID: 143137272247895086, guid: 7a5a7d4bafa537946a0d1c8fe835b845,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a5a7d4bafa537946a0d1c8fe835b845, type: 2}
   m_IsPrefabParent: 0
