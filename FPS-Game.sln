@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FPS-Game", "FPS-Game.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FPS-Game.Editor.Plugins", "FPS-Game.Editor.Plugins.csproj", "{67888900-3BEF-C951-57F5-5B347435DB34}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FPS-Game.Editor", "FPS-Game.Editor.csproj", "{94C7E6E1-FF44-CAF7-ABF0-CEA4D2483BEE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{67888900-3BEF-C951-57F5-5B347435DB34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67888900-3BEF-C951-57F5-5B347435DB34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67888900-3BEF-C951-57F5-5B347435DB34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94C7E6E1-FF44-CAF7-ABF0-CEA4D2483BEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94C7E6E1-FF44-CAF7-ABF0-CEA4D2483BEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94C7E6E1-FF44-CAF7-ABF0-CEA4D2483BEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94C7E6E1-FF44-CAF7-ABF0-CEA4D2483BEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
