@@ -17,6 +17,8 @@ public class FirstPersonPlayerController : MonoBehaviour {
     float verticalRotation = 0f;
     float moveSpeed;
     int numOfJumps = 0;
+    bool holdingItem = false;
+    GameObject heldItem;
 
     CharacterController cc;
 
@@ -72,14 +74,30 @@ public class FirstPersonPlayerController : MonoBehaviour {
 
         cc.Move(speed * Time.deltaTime);
 
+        if (Input.GetKeyDown(KeyCode.E) && !holdingItem) {
+            Debug.Log("Entering !holdingItem brackets");
+            heldItem = CrateController.WalkedOverObject;
+            Debug.Log("Attempted to hold item. HeldItem: " + heldItem);
+            if (heldItem) {
+                Debug.Log("heldItem was true");
+                heldItem.transform.parent = this.gameObject.transform;
+                Debug.Log("Attempted to set parent of held item");
+                holdingItem = true;
+            }
+        } else if (Input.GetKeyDown(KeyCode.E) && holdingItem) {
+            Debug.Log("Clearing held item");
+            heldItem.transform.parent = null;
+            heldItem = null;
+            holdingItem = false;
+        }
     }
 
-    
 
+    
+    /* Following code taken from stack overflow */
     // this script pushes all rigidbodies that the character touches
     void OnControllerColliderHit(ControllerColliderHit hit) {
         Rigidbody body = hit.collider.attachedRigidbody;
-
 
         // no rigidbody
         if (body == null || body.isKinematic) { return; }

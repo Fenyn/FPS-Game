@@ -258,26 +258,26 @@
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.1/UnityEngine.Purchasing.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.StandardEvents">
-      <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="KdTreeLib">
-      <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.1/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
-    </Reference>
     <Reference Include="ProBuilderCore">
       <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.1/ProBuilder/Classes/ProBuilderCore.dll</HintPath>
     </Reference>
     <Reference Include="ProBuilderMeshOps">
       <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.1/ProBuilder/Classes/ProBuilderMeshOps.dll</HintPath>
     </Reference>
+    <Reference Include="KdTreeLib">
+      <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.1/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
+    </Reference>
     <Reference Include="pb_Stl">
       <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.1/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
     </Reference>
     <Reference Include="Poly2Tri">
       <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.1/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.1/UnityEngine.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StandardEvents">
+      <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>E:\Unity Editors\2018.1.0b12\Editor\Data\MonoBleedingEdge\lib\mono\unity\mscorlib.dll</HintPath>
@@ -312,6 +312,10 @@
       <Project>{4BE31087-E804-3765-B06D-BBA2064AEBA4}</Project>
       <Name>FPS-Game.Plugins</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.ProBuilder.AddOns.Editor.csproj">
+      <Project>{E8F6AEC7-C558-7A8C-1B77-5EF90B9AD9FD}</Project>
+      <Name>Unity.ProBuilder.AddOns.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="UnityEditor.StandardEvents.csproj">
       <Project>{6800202F-4402-D405-F8CB-03DC7BD78B92}</Project>
       <Name>UnityEditor.StandardEvents</Name>
@@ -320,13 +324,10 @@
       <Project>{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}</Project>
       <Name>Unity.PackageManagerUI.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.ProBuilder.AddOns.Editor.csproj">
-      <Project>{E8F6AEC7-C558-7A8C-1B77-5EF90B9AD9FD}</Project>
-      <Name>Unity.ProBuilder.AddOns.Editor</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\BulletScript.cs" />
+    <Compile Include="Assets\Script\CrateController.cs" />
     <Compile Include="Assets\Script\FirstPersonPlayerController.cs" />
     <Compile Include="Assets\Script\FP_Shooter.cs" />
     <Compile Include="Assets\Script\PerformsAttack.cs" />

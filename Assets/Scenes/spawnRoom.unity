@@ -7141,6 +7141,10 @@ Prefab:
       propertyPath: pushPower
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1702710444799906, guid: 7a5a7d4bafa537946a0d1c8fe835b845, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a5a7d4bafa537946a0d1c8fe835b845, type: 2}
   m_IsPrefabParent: 0
@@ -15649,6 +15653,8 @@ GameObject:
   - component: {fileID: 1447518412}
   - component: {fileID: 1447518411}
   - component: {fileID: 1447518410}
+  - component: {fileID: 1447518415}
+  - component: {fileID: 1447518416}
   m_Layer: 0
   m_Name: Crate
   m_TagString: Untagged
@@ -15738,6 +15744,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1447518415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1447518409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c27aa2530f61ba4db355dacf9f037bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &1447518416
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1447518409}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.92
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &1453933612
 Mesh:
   m_ObjectHideFlags: 0
