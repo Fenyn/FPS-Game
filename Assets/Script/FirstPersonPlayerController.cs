@@ -49,8 +49,8 @@ public class FirstPersonPlayerController : MonoBehaviour {
         Camera.main.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
 
         //Character Movement
-        float forwardSpeed = Input.GetAxis("Vertical") * moveSpeed;
-        float sideSpeed = Input.GetAxis("Horizontal") * moveSpeed;
+        float forwardSpeed = Input.GetAxis("Vertical");
+        float sideSpeed = Input.GetAxis("Horizontal");
         /* End code provided by  Martin "quill18" Glaude */
 
         //Reset relevant parameters when character hits the ground
@@ -59,25 +59,25 @@ public class FirstPersonPlayerController : MonoBehaviour {
             numOfJumps = 0;
         }
 
+        Vector3 speed = new Vector3(sideSpeed, 0f, forwardSpeed);
+
+        speed = transform.rotation * speed;
+        speed = speed.normalized * moveSpeed;
+
+        //Basic gravity simulation, doubled the gravitic constant to provide for more responsive falling
+        verticalVelocity += Physics.gravity.y * Time.deltaTime;
+
         //Character Jumping
         if (Input.GetButtonDown("Jump") && (cc.isGrounded || numOfJumps < maxNumOfJumps)) {
             verticalVelocity = jumpHeight;
             numOfJumps++;
         }
-
-        //Basic gravity simulation, doubled the gravitic constant to provide for more responsive falling
-        verticalVelocity += Physics.gravity.y * Time.deltaTime;
-
-
-        Vector3 speed = new Vector3(sideSpeed, verticalVelocity, forwardSpeed).normalized;
-
-        speed = transform.rotation * speed;
-
-
-        //cc.SimpleMove(speed*moveSpeed);
+        //Let gravity affect player
+        speed.y = verticalVelocity;
 
         cc.Move(speed * Time.deltaTime);
 
+        //pick up objects on keypress
         if (Input.GetKeyDown(KeyCode.E) && !carryManager.ItemIsBeingCarried) {
             Ray ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0));
             RaycastHit hit;
@@ -85,9 +85,13 @@ public class FirstPersonPlayerController : MonoBehaviour {
                 carryManager.PickUpItem(hit);                
             }
             
-        } else if (Input.GetButtonDown("Fire1") && carryManager.ItemIsBeingCarried) {
+        }
+        //drop item
+        else if (Input.GetButtonDown("Fire1") && carryManager.ItemIsBeingCarried) {
             carryManager.DropItem(thrustForce);
-        } else if (Input.GetButtonDown("Fire2") && carryManager.ItemIsBeingCarried) {
+        }
+        //throw item
+        else if (Input.GetButtonDown("Fire2") && carryManager.ItemIsBeingCarried) {
             carryManager.DropItem(thrustForce * throwMultiplier);
         }
 
