@@ -6,19 +6,21 @@ using UnityEngine;
 public class FirstPersonPlayerController : MonoBehaviour {
 
     public StatisticsManager statManager;
+    public ObjectCarryManager carryManager;
     public float mouseSensitivityLR = 2f;
     public float mouseSensitivityUD = 2f;
-    public float cameraRotationLimit = 60.0f;
     public float jumpHeight = 5.0f;
-    public float verticalVelocity = 0f;
     public float pushPower = 2.0f;
     public int maxNumOfJumps = 2;
+    public float grabDistance = 5f;
 
+    float cameraRotationLimit = 90.0f;
+    float verticalVelocity = 0f;
     float verticalRotation = 0f;
     float moveSpeed;
     int numOfJumps = 0;
     bool holdingItem = false;
-    GameObject heldItem;
+    public GameObject heldItem;
 
     CharacterController cc;
 
@@ -27,7 +29,8 @@ public class FirstPersonPlayerController : MonoBehaviour {
         /* Following code provided by  Martin "quill18" Glaude */
         Cursor.lockState = CursorLockMode.Locked;
         cc = GetComponent<CharacterController>();
-        statManager = GameObject.Find("Player").GetComponent<StatisticsManager>();
+        statManager = GetComponent<StatisticsManager>();
+        carryManager = GetComponentInChildren<ObjectCarryManager>();
         moveSpeed = statManager.MoveSpeed;
         /* End code provided by  Martin "quill18" Glaude */
     }
@@ -75,19 +78,16 @@ public class FirstPersonPlayerController : MonoBehaviour {
         cc.Move(speed * Time.deltaTime);
 
         if (Input.GetKeyDown(KeyCode.E) && !holdingItem) {
-            Debug.Log("Entering !holdingItem brackets");
-            heldItem = CrateController.WalkedOverObject;
-            Debug.Log("Attempted to hold item. HeldItem: " + heldItem);
-            if (heldItem) {
-                Debug.Log("heldItem was true");
-                heldItem.transform.parent = this.gameObject.transform;
-                Debug.Log("Attempted to set parent of held item");
-                holdingItem = true;
+            Ray ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0));
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, grabDistance) && hit.transform.tag.Equals("item")) {
+                if (carryManager.PickUpItem(hit)) {
+                    holdingItem = true;
+                }
             }
+            
         } else if (Input.GetKeyDown(KeyCode.E) && holdingItem) {
-            Debug.Log("Clearing held item");
-            heldItem.transform.parent = null;
-            heldItem = null;
+            carryManager.DropItem();
             holdingItem = false;
         }
     }

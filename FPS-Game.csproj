@@ -327,9 +327,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\BulletScript.cs" />
-    <Compile Include="Assets\Script\CrateController.cs" />
     <Compile Include="Assets\Script\FirstPersonPlayerController.cs" />
     <Compile Include="Assets\Script\FP_Shooter.cs" />
+    <Compile Include="Assets\Script\ObjectCarryManager.cs" />
     <Compile Include="Assets\Script\PerformsAttack.cs" />
     <Compile Include="Assets\Script\StatisticsManager.cs" />
     <Compile Include="Assets\Script\UIStatManager.cs" />
