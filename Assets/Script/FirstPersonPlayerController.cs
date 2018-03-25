@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,10 +31,10 @@ public class FirstPersonPlayerController : MonoBehaviour {
         /* Following code provided by  Martin "quill18" Glaude */
         Cursor.lockState = CursorLockMode.Locked;
         cc = GetComponent<CharacterController>();
+        /* End code provided by  Martin "quill18" Glaude */
         statManager = GetComponent<StatisticsManager>();
         carryManager = GetComponentInChildren<ObjectCarryManager>();
         moveSpeed = statManager.MoveSpeed;
-        /* End code provided by  Martin "quill18" Glaude */
     }
 
     // Update is called once per frame
@@ -77,28 +78,36 @@ public class FirstPersonPlayerController : MonoBehaviour {
 
         cc.Move(speed * Time.deltaTime);
 
+
+        CheckForCarriedItem();
+    }
+
+    private void CheckForCarriedItem() {
+        //if (Input.GetMouseButton(2) && carryManager.ItemIsBeingCarried) {
+        //    carryManager.RotateObject();
+        //}
+
         //pick up objects on keypress
         if (Input.GetKeyDown(KeyCode.E) && !carryManager.ItemIsBeingCarried) {
             Ray ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0));
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, grabDistance) && hit.transform.tag.Equals("item")) {
-                carryManager.PickUpItem(hit);                
+                carryManager.PickUpItem(hit);
             }
-            
+
         }
-        //drop item
-        else if (Input.GetButtonDown("Fire1") && carryManager.ItemIsBeingCarried) {
+        //drop item if holding item and Mouse1 or E is pressed
+        else if ((Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.E)) && carryManager.ItemIsBeingCarried) {
             carryManager.DropItem(thrustForce);
         }
         //throw item
         else if (Input.GetButtonDown("Fire2") && carryManager.ItemIsBeingCarried) {
             carryManager.DropItem(thrustForce * throwMultiplier);
         }
-
     }
 
 
-    
+
     /* Following code taken from stack overflow */
     // this script pushes all rigidbodies that the character touches
     void OnControllerColliderHit(ControllerColliderHit hit) {
