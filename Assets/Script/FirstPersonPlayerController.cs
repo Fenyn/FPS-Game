@@ -11,6 +11,7 @@ public class FirstPersonPlayerController : MonoBehaviour {
     public float cameraRotationLimit = 60.0f;
     public float jumpHeight = 5.0f;
     public float verticalVelocity = 0f;
+    public float pushPower = 2.0f;
     public int maxNumOfJumps = 2;
 
     float verticalRotation = 0f;
@@ -72,4 +73,29 @@ public class FirstPersonPlayerController : MonoBehaviour {
         cc.Move(speed * Time.deltaTime);
 
     }
+
+    
+
+    // this script pushes all rigidbodies that the character touches
+    void OnControllerColliderHit(ControllerColliderHit hit) {
+        Rigidbody body = hit.collider.attachedRigidbody;
+
+
+        // no rigidbody
+        if (body == null || body.isKinematic) { return; }
+
+        // We dont want to push objects below us
+        if (hit.moveDirection.y < -0.3) {
+            return;
+        }
+        // Calculate push direction from move direction,
+        // we only push objects to the sides never up and down
+        var pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+        // If you know how fast your character is trying to move,
+        // then you can also multiply the push velocity by that.
+        // Apply the push
+        body.velocity = pushDir * pushPower;
+
+    }
+
 }
