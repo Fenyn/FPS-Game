@@ -27,7 +27,7 @@ public abstract class Weapon {
         }
     }
 
-    public virtual float MaxAmmo {
+    public virtual int MaxAmmo {
         get {
             return maxAmmo;
         }

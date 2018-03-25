@@ -13,13 +13,14 @@ public class FirstPersonPlayerController : MonoBehaviour {
     public float pushPower = 2.0f;
     public int maxNumOfJumps = 2;
     public float grabDistance = 5f;
+    public float thrustForce;
+    public float throwMultiplier;
 
     float cameraRotationLimit = 90.0f;
     float verticalVelocity = 0f;
     float verticalRotation = 0f;
     float moveSpeed;
     int numOfJumps = 0;
-    bool holdingItem = false;
     public GameObject heldItem;
 
     CharacterController cc;
@@ -65,10 +66,10 @@ public class FirstPersonPlayerController : MonoBehaviour {
         }
 
         //Basic gravity simulation, doubled the gravitic constant to provide for more responsive falling
-        verticalVelocity += Physics.gravity.y * Time.deltaTime * 2;
+        verticalVelocity += Physics.gravity.y * Time.deltaTime;
 
 
-        Vector3 speed = new Vector3(sideSpeed, verticalVelocity, forwardSpeed);
+        Vector3 speed = new Vector3(sideSpeed, verticalVelocity, forwardSpeed).normalized;
 
         speed = transform.rotation * speed;
 
@@ -77,19 +78,19 @@ public class FirstPersonPlayerController : MonoBehaviour {
 
         cc.Move(speed * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.E) && !holdingItem) {
+        if (Input.GetKeyDown(KeyCode.E) && !carryManager.ItemIsBeingCarried) {
             Ray ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0));
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, grabDistance) && hit.transform.tag.Equals("item")) {
-                if (carryManager.PickUpItem(hit)) {
-                    holdingItem = true;
-                }
+                carryManager.PickUpItem(hit);                
             }
             
-        } else if (Input.GetKeyDown(KeyCode.E) && holdingItem) {
-            carryManager.DropItem();
-            holdingItem = false;
+        } else if (Input.GetButtonDown("Fire1") && carryManager.ItemIsBeingCarried) {
+            carryManager.DropItem(thrustForce);
+        } else if (Input.GetButtonDown("Fire2") && carryManager.ItemIsBeingCarried) {
+            carryManager.DropItem(thrustForce * throwMultiplier);
         }
+
     }
 
 
@@ -106,6 +107,7 @@ public class FirstPersonPlayerController : MonoBehaviour {
         if (hit.moveDirection.y < -0.3) {
             return;
         }
+        
         // Calculate push direction from move direction,
         // we only push objects to the sides never up and down
         var pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);

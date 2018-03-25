@@ -14,19 +14,23 @@ public class ObjectCarryManager : MonoBehaviour {
     bool itemIsBeingCarried;
     float grabDistance;
 
-
+    public bool ItemIsBeingCarried {
+        get {
+            return itemIsBeingCarried;
+        }
+    }
 
     private void FixedUpdate() {
-        if (itemIsBeingCarried) {
+        if (ItemIsBeingCarried) {
             float step = itemMoveSpeed * Time.deltaTime;
             itemToCarry.position = Vector3.MoveTowards(itemToCarry.position, spotToCarry.position, step);
         }
     }
 
     private void Update() {
-        if (itemIsBeingCarried) {
+        if (ItemIsBeingCarried) {
             if (Vector3.Distance(cameraPosition.position, itemToCarry.position) > maxReach) {
-                DropItem();
+                DropItem(0f);
             }
         }
     }
@@ -36,13 +40,16 @@ public class ObjectCarryManager : MonoBehaviour {
         itemToCarry = hit.transform;
         itemToCarryRigidbody = hit.rigidbody;
         itemToCarryRigidbody.useGravity = false;
+        //itemToCarryRigidbody.isKinematic = true;
         return itemToCarry.gameObject;
     }
 
-    public void DropItem() {
+    public void DropItem(float thrustForce) {
         itemIsBeingCarried = false;
         itemToCarry = null;
         itemToCarryRigidbody.useGravity = true;
+        //itemToCarryRigidbody.isKinematic = false;
+        itemToCarryRigidbody.AddForce(Camera.main.transform.forward * thrustForce, ForceMode.Impulse);
         itemToCarryRigidbody = null;
     }
 }

@@ -27,7 +27,7 @@ public class Pistol : Weapon {
         }
     }
 
-    public override float MaxAmmo {
+    public override int MaxAmmo {
         get {
             return maxAmmo;
         }
