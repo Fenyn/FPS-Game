@@ -38,7 +38,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4663478511191756}
-  - component: {fileID: 114589888285300852}
   - component: {fileID: 195101082463955494}
   - component: {fileID: 114621096267020158}
   m_Layer: 0
@@ -132,19 +131,6 @@ MonoBehaviour:
   currentHealth: 0
   moveSpeed: 10
   bulletGO: {fileID: 0}
---- !u!114 &114589888285300852
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1950768987392328}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0a437a8b48a2ea43ab8d325c289b6c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 1
-  rotateSpeed: 30
 --- !u!114 &114621096267020158
 MonoBehaviour:
   m_ObjectHideFlags: 1
