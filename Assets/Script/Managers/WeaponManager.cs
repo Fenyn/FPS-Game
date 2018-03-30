@@ -14,9 +14,6 @@ public class WeaponManager : MonoBehaviour {
     public float timeSinceFired;
     public Weapon activeWep;
 
-    private const int PullGun = 0;
-    private const int PushGun = 1;
-
     public Weapon ActiveWep {
         get {
             return activeWep;
@@ -82,13 +79,13 @@ public class WeaponManager : MonoBehaviour {
 
         //Weapon Switching
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            setActiveWeapon(PullGun);
-            ActiveWep = weaponArray[PullGun];
+            setActiveWeapon(0);
+            ActiveWep = weaponArray[0];
             Debug.Log("Active weapon is now a " + ActiveWep);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            setActiveWeapon(PushGun);
-            ActiveWep = weaponArray[PushGun];
+            setActiveWeapon(1);
+            ActiveWep = weaponArray[1];
             Debug.Log("Active weapon is now a " + ActiveWep);
         }
         //else if (Input.GetKeyDown(KeyCode.Alpha3)) {
