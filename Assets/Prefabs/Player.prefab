@@ -536,7 +536,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1702710444799906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 50.2, y: 19.03, z: -34.4}
+  m_LocalPosition: {x: -17.01, y: 6.25, z: 7.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4085914694087806}
@@ -974,6 +974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statManager: {fileID: 114550763192342120}
   carryManager: {fileID: 114543489421721222}
+  toolManager: {fileID: 0}
   mouseSensitivityLR: 3
   mouseSensitivityUD: 3
   jumpHeight: 10
@@ -981,7 +982,8 @@ MonoBehaviour:
   maxNumOfJumps: 2
   grabDistance: 6
   thrustForce: 0
-  heldItem: {fileID: 0}
+  throwMultiplier: 0
+  verticalVelocity: 0
 --- !u!114 &114298396908296414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1010,6 +1012,7 @@ MonoBehaviour:
   ammoCounterUIObject: {fileID: 1589589835991220}
   healthCounterUIObject: {fileID: 1952508096639878}
   wepManager: {fileID: 114845255073794826}
+  statMan: {fileID: 0}
 --- !u!114 &114535127778611444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1070,7 +1073,10 @@ MonoBehaviour:
   cameraPosition: {fileID: 4085914694087806}
   spotToCarry: {fileID: 4086164063395792}
   itemMoveSpeed: 20
+  rotationSpeed: 0
   maxReach: 8
+  itemToCarry: {fileID: 0}
+  itemIsBeingCarried: 0
 --- !u!114 &114550763192342120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1143,6 +1149,7 @@ MonoBehaviour:
   ammoCounterUIObject: {fileID: 1589589835991220}
   healthCounterUIObject: {fileID: 1952508096639878}
   wepManager: {fileID: 114845255073794826}
+  statMan: {fileID: 0}
 --- !u!114 &114826147727318130
 MonoBehaviour:
   m_ObjectHideFlags: 1

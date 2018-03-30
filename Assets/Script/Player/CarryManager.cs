@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectCarryManager : MonoBehaviour {
+public class CarryManager : MonoBehaviour {
 
     public Transform cameraPosition;
     public Transform spotToCarry;
@@ -10,10 +10,9 @@ public class ObjectCarryManager : MonoBehaviour {
     public float rotationSpeed;
     public float maxReach;
 
-    Transform itemToCarry;
+    public Transform itemToCarry;
     Rigidbody itemToCarryRigidbody;
-    bool itemIsBeingCarried;
-    float grabDistance;
+    public bool itemIsBeingCarried;
 
     public bool ItemIsBeingCarried {
         get {
@@ -31,7 +30,7 @@ public class ObjectCarryManager : MonoBehaviour {
     private void Update() {
         if (ItemIsBeingCarried) {
             if (Vector3.Distance(cameraPosition.position, itemToCarry.position) > maxReach) {
-                DropItem();
+                //DropItem();
             } else {
                 RotateObject();
             }
