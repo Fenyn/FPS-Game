@@ -329,6 +329,7 @@
     <Compile Include="Assets\BrokenVector\LowPolySurvivalEssentials\Example\Scripts\AnimatedFire.cs" />
     <Compile Include="Assets\Script\Enemies\NonPlayerController.cs" />
     <Compile Include="Assets\Script\FP_Shooter.cs" />
+    <Compile Include="Assets\Script\LineOfSightScript.cs" />
     <Compile Include="Assets\Script\Managers\CarryManager.cs" />
     <Compile Include="Assets\Script\Managers\CollectableManager.cs" />
     <Compile Include="Assets\Script\Managers\SpawnManager.cs" />
