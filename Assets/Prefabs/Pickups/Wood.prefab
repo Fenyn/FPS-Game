@@ -111,10 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9820f51766271c4d84682aca64f606d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectableManager: {fileID: 0}
-  possiblePickupTypes:
-  - Apple
-  - Bread
-  - Meat
-  - Wood
   currentItemType: Wood
+  rotateSpeed: 50
+  speed: 1
+  height: 0.25

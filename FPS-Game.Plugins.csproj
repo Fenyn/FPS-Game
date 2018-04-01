@@ -371,6 +371,8 @@
   <ItemGroup>
     <None Include="Assets\BrokenVector\LowPolyShaders\Shaders\LowPolyPBRShader.shader" />
     <None Include="Assets\BrokenVector\LowPolyShaders\Shaders\LowPolyUnlitShader.shader" />
+    <None Include="Assets\Easy Outline\Shaders\MobileBlur.shader" />
+    <None Include="Assets\Easy Outline\Shaders\ScreenSpaceOutlineShader.shader" />
     <None Include="Assets\Sci-fi Weapons Arsenal\Effects\Shaders\WeaponLazer.shader" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\ParticleSystems\ParticleSystemsGuidelines.txt" />
