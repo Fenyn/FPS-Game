@@ -329,8 +329,10 @@
     <Compile Include="Assets\BrokenVector\LowPolySurvivalEssentials\Example\Scripts\AnimatedFire.cs" />
     <Compile Include="Assets\Easy Outline\Behaviours\OutlineSystem.cs" />
     <Compile Include="Assets\Script\Enemies\NonPlayerController.cs" />
+    <Compile Include="Assets\Script\EnterableBuilding.cs" />
     <Compile Include="Assets\Script\FP_Shooter.cs" />
     <Compile Include="Assets\Script\LineOfSightScript.cs" />
+    <Compile Include="Assets\Script\Managers\BuildingOutlineManager.cs" />
     <Compile Include="Assets\Script\Managers\CarryManager.cs" />
     <Compile Include="Assets\Script\Managers\CollectableManager.cs" />
     <Compile Include="Assets\Script\Managers\SpawnManager.cs" />
@@ -342,6 +344,7 @@
     <Compile Include="Assets\Script\Player\BulletScript.cs" />
     <Compile Include="Assets\Script\Player\FirstPersonPlayerController.cs" />
     <Compile Include="Assets\Script\Player\PlayerToolManager.cs" />
+    <Compile Include="Assets\Script\TerrainSetter.cs" />
     <Compile Include="Assets\Script\Tools\PhysicsGun.cs" />
     <Compile Include="Assets\Script\Tools\Tool.cs" />
     <Compile Include="Assets\Script\Weapons\Pistol.cs" />
