@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class CollectableManager : MonoBehaviour {
 
-    public int numOfApples = 0;
-    public int numOfBreadLoves = 0;
-    public int numOfWood = 0;
-    public int numOfMeat = 0;
+    int numOfApples = 0;
+    int numOfBreadLoves = 0;
+    int numOfWood = 0;
+    int numOfMeat = 0;
+    int numOfActiveCollectables = 0;
 
     CollectableManager instance;
+    LevelManager levelManager;
 
     public int NumOfApples {
         get {
@@ -47,8 +49,11 @@ public class CollectableManager : MonoBehaviour {
             //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
             Destroy(gameObject);
         }
-        //Sets this to not be destroyed when reloading scene
-        DontDestroyOnLoad(gameObject);
+        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+        InitializePickups();
+    }
+
+    private void Update() {
     }
 
     public void PickUpItem(string pickupType) {
@@ -72,6 +77,24 @@ public class CollectableManager : MonoBehaviour {
             default:
                 Debug.Log("Incrementing " + pickupType.ToLower());
                 break;
+        }
+
+        DecrementCollectables();
+    }
+
+    void InitializePickups() {
+        GameObject[] pickups = GameObject.FindGameObjectsWithTag("pickup");
+        foreach (GameObject pickup in pickups) {
+            numOfActiveCollectables++;
+        }
+    }
+
+    public void DecrementCollectables() {
+        numOfActiveCollectables--;
+        Debug.Log(numOfActiveCollectables);
+        if (numOfActiveCollectables <= 0) {
+            Debug.Log("Ending level");
+            //levelManager.CompleteLevel();
         }
     }
 }

@@ -24,12 +24,12 @@ public class NonPlayerController : MonoBehaviour {
             agent.isStopped = false;
             agent.destination = goal.position;
 
-            //check if we lost line of sight and passify agent if so
-            if (Physics.Linecast(transform.position, goal.position)) {
-                Debug.Log("Line of sight lost");
-                isPassive = true;
-                agent.isStopped = true;
-            }
+            ////check if we lost line of sight and passify agent if so
+            //if (Physics.Linecast(transform.position, goal.position)) {
+            //    Debug.Log("Line of sight lost");
+            //    isPassive = true;
+            //    agent.isStopped = true;
+            //}
         }
         else {
         }

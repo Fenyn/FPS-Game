@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour {
 
     public GameObject enemyPrefab;          // prefab to spawn
-	public float spawnTime = 6f;            // how long between each spawn
+    public float spawnTime = 6f;            // how long between each spawn
     private Vector3 spawnPosition;
 
     SpawnManager instance;
@@ -22,8 +22,6 @@ public class SpawnManager : MonoBehaviour {
             //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
             Destroy(gameObject);
         }
-        //Sets this to not be destroyed when reloading scene
-        DontDestroyOnLoad(gameObject);
     }
 
     // Use this for initialization
