@@ -44,4 +44,11 @@ public class NonPlayerController : MonoBehaviour {
             isPassive = false;
         }
     }
+
+    private void OnCollisionEnter(Collision collision) {
+        if(collision.gameObject.tag.Equals("Player")) {
+            Debug.Log("Eating player");
+        }
+
+    }
 }

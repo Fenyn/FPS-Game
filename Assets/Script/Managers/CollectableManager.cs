@@ -4,38 +4,45 @@ using UnityEngine;
 
 public class CollectableManager : MonoBehaviour {
 
-    int numOfApples = 0;
-    int numOfBreadLoves = 0;
-    int numOfWood = 0;
-    int numOfMeat = 0;
+    //int numOfApples = 0;
+    //int numOfBreadLoves = 0;
+    //int numOfWood = 0;
+    //int numOfMeat = 0;
     int numOfActiveCollectables = 0;
+    int score;
 
     CollectableManager instance;
     LevelManager levelManager;
 
-    public int NumOfApples {
+    public int Score {
         get {
-            return numOfApples;
+            return score;
         }
     }
 
-    public int NumOfBreadLoves {
-        get {
-            return numOfBreadLoves;
-        }
-    }
+    //public int NumOfApples {
+    //    get {
+    //        return numOfApples;
+    //    }
+    //}
 
-    public int NumOfWood {
-        get {
-            return numOfWood;
-        }
-    }
+    //public int NumOfBreadLoves {
+    //    get {
+    //        return numOfBreadLoves;
+    //    }
+    //}
 
-    public int NumOfMeat {
-        get {
-            return numOfMeat;
-        }
-    }
+    //public int NumOfWood {
+    //    get {
+    //        return numOfWood;
+    //    }
+    //}
+
+    //public int NumOfMeat {
+    //    get {
+    //        return numOfMeat;
+    //    }
+    //}
 
     //Awake is always called before any Start functions
     void Awake() {
@@ -53,29 +60,18 @@ public class CollectableManager : MonoBehaviour {
         InitializePickups();
     }
 
-    private void Update() {
-    }
-
     public void PickUpItem(string pickupType) {
         switch (pickupType.ToLower()) {
-            case "apple":
+            case "smallbag":
                 Debug.Log("Incrementing " + pickupType.ToLower());
-                numOfApples++;
+                score += 15;
                 break;
-            case "bread":
+            case "bigchest":
                 Debug.Log("Incrementing " + pickupType.ToLower());
-                numOfBreadLoves++;
-                break;
-            case "meat":
-                Debug.Log("Incrementing " + pickupType.ToLower());
-                numOfMeat++;
-                break;
-            case "wood":
-                Debug.Log("Incrementing " + pickupType.ToLower());
-                numOfWood++;
+                score += 50;
                 break;
             default:
-                Debug.Log("Incrementing " + pickupType.ToLower());
+                Debug.Log("Tried to increment " + pickupType.ToLower() + " and hit default case");
                 break;
         }
 

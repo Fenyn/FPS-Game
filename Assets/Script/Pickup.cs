@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour {
 
-    string[] possiblePickupTypes = new string[] { "Apple", "Bread", "Meat", "Wood"};
+    string[] possiblePickupTypes = new string[] { "smallBag, bigChest"};
     public string currentItemType;
     CollectableManager collectableManager;
 

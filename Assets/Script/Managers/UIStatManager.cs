@@ -7,10 +7,7 @@ public class UIStatManager : MonoBehaviour {
 
     public GameObject ammoCounterUIObject;
     public GameObject healthCounterUIObject;
-    public GameObject appleCounterUIObject;
-    public GameObject meatCounterUIObject;
-    public GameObject breadCounterUIObject;
-    public GameObject woodCounterUIObject;
+    public GameObject scoreCounterUIObject;
 
     public StatisticsManager statManager;
     public WeaponManager wepManager;
@@ -65,10 +62,7 @@ public class UIStatManager : MonoBehaviour {
     }
 
     void updateCounters() {
-        appleCounterUIObject.GetComponent<Text>().text = "Apples: " + collectableManager.NumOfApples.ToString();
-        breadCounterUIObject.GetComponent<Text>().text = "Bread: " + collectableManager.NumOfBreadLoves.ToString();
-        meatCounterUIObject.GetComponent<Text>().text = "Meat: " + collectableManager.NumOfMeat.ToString();
-        woodCounterUIObject.GetComponent<Text>().text = "Wood: " + collectableManager.NumOfWood.ToString();
+        scoreCounterUIObject.GetComponent<Text>().text = "Score: " + collectableManager.Score.ToString();   
     }
 
 }
