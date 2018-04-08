@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour {
 
+    public Transform[] spawnPoints;         // valid places for things to spawn
     public GameObject enemyPrefab;          // prefab to spawn
     public float spawnTime = 6f;            // how long between each spawn
     private Vector3 spawnPosition;
+
 
     SpawnManager instance;
 
@@ -27,7 +29,7 @@ public class SpawnManager : MonoBehaviour {
     // Use this for initialization
     void Start() {
         // Call the Spawn function after a delay of the spawnTime and then continue to call after the same amount of time.
-        InvokeRepeating("Spawn", spawnTime, spawnTime);
+        InvokeRepeating("SpawnAtPoint", spawnTime, spawnTime);
     }
 
     void Spawn() {
@@ -36,5 +38,11 @@ public class SpawnManager : MonoBehaviour {
         spawnPosition.z = Random.Range(-17, 17);
 
         Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+    }
+
+    void SpawnAtPoint() {
+        int spawnIndex = Random.Range(0, spawnPoints.Length);
+        Debug.Log("Spawning at index: " + spawnIndex);
+        Instantiate(enemyPrefab, spawnPoints[spawnIndex].position, spawnPoints[spawnIndex].rotation);
     }
 }

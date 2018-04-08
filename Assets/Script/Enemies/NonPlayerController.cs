@@ -14,6 +14,9 @@ public class NonPlayerController : MonoBehaviour {
     void Start () {
         goal = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+
+        //set this to false at the start to ignore line of sight activation
+        isPassive = false;
 	}
 	
 	// Update is called once per frame
