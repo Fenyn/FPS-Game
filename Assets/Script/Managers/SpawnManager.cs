@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SpawnManager : MonoBehaviour {
 
-    public Transform[] spawnPoints;         // valid places for things to spawn
+    public Transform[] enemySpawnPoints;         // valid places for things to spawn
     public GameObject enemyPrefab;          // prefab to spawn
+    public GameObject[] pickupPrefabs;
     public float spawnTime = 6f;            // how long between each spawn
     private Vector3 spawnPosition;
 
@@ -29,7 +31,10 @@ public class SpawnManager : MonoBehaviour {
     // Use this for initialization
     void Start() {
         // Call the Spawn function after a delay of the spawnTime and then continue to call after the same amount of time.
-        InvokeRepeating("SpawnAtPoint", spawnTime, spawnTime);
+        InvokeRepeating("SpawnEnemyAtPoint", spawnTime, spawnTime);
+
+        InvokeRepeating("SpawnPickupsRandomly", spawnTime, spawnTime);
+
     }
 
     void Spawn() {
@@ -40,9 +45,25 @@ public class SpawnManager : MonoBehaviour {
         Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
     }
 
-    void SpawnAtPoint() {
-        int spawnIndex = Random.Range(0, spawnPoints.Length);
+    void SpawnEnemyAtPoint() {
+        int spawnIndex = Random.Range(0, enemySpawnPoints.Length);
         Debug.Log("Spawning at index: " + spawnIndex);
-        Instantiate(enemyPrefab, spawnPoints[spawnIndex].position, spawnPoints[spawnIndex].rotation);
+        Instantiate(enemyPrefab, enemySpawnPoints[spawnIndex].position, enemySpawnPoints[spawnIndex].rotation);
+    }
+
+    void SpawnPickupsRandomly() {
+        Debug.Log("Spawning pickup");
+        Instantiate(pickupPrefabs[0], RandomNavmeshLocation(40f), Quaternion.identity);
+    }
+
+    public Vector3 RandomNavmeshLocation(float radius) {
+        Vector3 randomDirection = Random.insideUnitSphere * radius;
+        randomDirection += transform.position;
+        NavMeshHit hit;
+        Vector3 finalPosition = Vector3.zero;
+        if (NavMesh.SamplePosition(randomDirection, out hit, radius, 1)) {
+            finalPosition = hit.position;
+        }
+        return finalPosition;
     }
 }
